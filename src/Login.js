@@ -1,29 +1,38 @@
-import React, { Component } from 'react';
-import {Link} from "react-router-dom";
-import Navbar from "./Navbar";
+import React, {Component} from 'react';
+import axios from "axios";
 
-class App extends Component {
+
+class Login extends Component {
+
+
     render() {
         return (
-            <form>
-                <h3>Vous possédez deja un compte?</h3>
-                <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+            <>
+                <div className="col-md-5">
+                    <div className="card">
+                        <div className="card-header">
+                            Connexion
+                        </div>
+                        <div className="card-body">
+                            <form className="form-signin">
+                                <div className="text-center mb-4">
+                                    <h1 className="h3 mb-3 font-weight-normal">Vous possédez deja un compte?</h1>
+                                </div>
+                                <div className="form-label-group mb-4">
+                                    <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus/>
+                                </div>
+                                <div className="form-label-group mb-4">
+                                    <input type="password" id="inputPassword" className="form-control" placeholder="Password" required/>
+                                </div>
+                                <button className="btn btn-lg btn-primary btn-block" type="submit" >Connexion</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1"></input>
-                </div>
-                <div className="form-group form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                        <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+            </>
+
         )
     }
 
 }
-
-export default App;
+export default Login;

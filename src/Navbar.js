@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 
-class Nav extends Component {
+class App extends Component {
     render()
     {
         return(
+            <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <a className="navbar-brand" href="#">BetFriend</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
@@ -18,13 +19,14 @@ class Nav extends Component {
                             <Link className="nav-link" to="/">Home</Link>
                         </li>
                         <li className="nav item">
-                            <Link className="nav-link" to="/Portal">Tableau de bord</Link>
+                            <Link className="nav-link" to="/Portal">Register</Link>
                         </li>
                     </ul>
                 </div>
             </nav>
+            </div>
         )
     }
 }
 
-export default Nav;
+export default App;

@@ -1,17 +1,18 @@
 import React, {Component} from 'react';
 import Login from './Login';
 import Register from './Register';
-import {Link} from "react-router-dom";
 
-class App extends Component{
-    render(){
-        return(
-            <div>
-                <Login/>
-                <Register/>
+
+class Portal extends Component {
+    render() {
+        return (
+            <div className={"container mt-4"}>
+                <div className="row">
+                    <Login/>
+                    <Register/>
+                </div>
             </div>
         )
     }
 }
-
-export default App;
+export default Portal;
