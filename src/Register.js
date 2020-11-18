@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
+import {Switch, Route, Router} from 'react-router-dom';
 
 class Register extends Component {
 
@@ -49,18 +50,6 @@ class Register extends Component {
 
         this.setState({ name: '', email: '',password:'' })
     }
-
-    //handleClick(){
-       // axios.post("http://localhost:8080/register",{email: this.state.username,username: this.state.username,password: this.state.password})
-
-            //.then(function (response) {
-               //console.log(response);
-                //this.setSate({})
-            //})
-           // .catch(function (error) {
-                //console.log(error);
-            //});
-    //}
 
     render() {
         return (
