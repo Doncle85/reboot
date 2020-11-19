@@ -12,12 +12,13 @@ class App extends Component {
         return (
             <>
 
-                    <Navbar/>
+                <Navbar/>
                 <Switch>
                     <Route exact path='/' component={Home}/>
                     <Route path='/Portal' component={Portal}/>
                 </Switch>
                 <Footer/>
+
 
             </>
         )
