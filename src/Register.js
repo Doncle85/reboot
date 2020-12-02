@@ -66,7 +66,7 @@ class Register extends Component {
         return <>
 
             <Modal show={this.state.showModal}>
-                <Modal.Header closeButton>
+                <Modal.Header closeButton onClick={this.handleClose}>
                     <Modal.Title>Inscription Reussie</Modal.Title>
                 </Modal.Header>
 

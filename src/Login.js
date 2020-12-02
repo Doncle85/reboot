@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import {Redirect, Route} from "react-router";
+import {Button, Modal} from "react-bootstrap";
 
 
 class Login extends Component {
@@ -12,11 +13,13 @@ class Login extends Component {
         this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
         this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleClose = this.handleClose.bind(this);
 
         this.state = {
             email: '',
             password: '',
-            loggedIn: false
+            loggedIn: false,
+            fail : false
         }
     }
 
@@ -42,19 +45,39 @@ class Login extends Component {
                 .then((res) => {
                     this.setState({loggedIn:true})
                 }).catch((error) => {
-                console.log(error)
+                this.setState({fail:true})
             });
 
             this.setState({ email: '',password:'' })
         }
+
+    handleClose() {
+        this.setState({fail: false})
+    }
+
     render() {
         return (
             <>
+
                 <Route exact path="/Portal">
                     {this.state.loggedIn ? <Redirect to="/dashboard" /> : null}
                 </Route>
-                to: string
-                <div className="col-md-5">
+                {this.state.fail ?   <Modal show={this.state.fail}>
+                        <Modal.Header closeButton onClick={this.handleClose}>
+                            <Modal.Title>Fail</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <iframe src="https://giphy.com/embed/gQDazMXigdtD2" width="480" height="309"
+                             frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button variant="success" onClick={this.handleClose}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
+                    : null}
+                    <div className="col-md-5">
                     <div className="card">
                         <div className="card-header">
                             Connexion
