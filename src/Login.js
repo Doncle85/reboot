@@ -13,6 +13,7 @@ class Login extends Component {
         this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
         this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleClose = this.handleClose.bind(this);
 
         this.state = {
             email: '',
@@ -62,7 +63,7 @@ class Login extends Component {
                     {this.state.loggedIn ? <Redirect to="/dashboard" /> : null}
                 </Route>
                 {this.state.fail ?   <Modal show={this.state.fail}>
-                        <Modal.Header closeButton>
+                        <Modal.Header closeButton onClick={this.handleClose}>
                             <Modal.Title>Fail</Modal.Title>
                         </Modal.Header>
 
