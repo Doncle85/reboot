@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import Bouton from "./Bouton";
+import Pari from "./Pari"
 
 class Paris extends Component{
+    state = {
+            paris : [
+                {id:1 ,pari:"po",createur:"po",enjeu:"po",participants:"po",fin:"pi"}
+            ]
+    }
+
     render() {
     return (
     <table className="table text-center">
@@ -16,14 +22,21 @@ class Paris extends Component{
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>paris 1</td>
-            <td>créateur 1</td>
-            <td>enjeu 1</td>
-            <td>participants 1</td>
-            <td>31/12/2020</td>
-            <td><Bouton typeBtn={"btn-danger"} click={() => console.log("supprimer")}>Supprimer</Bouton></td>
-        </tr>
+        {
+            this.state.paris.map(pari => {
+                return  (
+                    <tr key={pari.id}>
+                        <Pari
+                            pari={pari.pari}
+                            createur={pari.createur}
+                            enjeu={pari.enjeu}
+                            participants={pari.participants}
+                            fin={pari.fin}
+                        />
+                    </tr>
+                )
+            })
+        }
         </tbody>
     </table>
     )
