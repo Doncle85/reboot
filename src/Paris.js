@@ -8,6 +8,17 @@ class Paris extends Component{
             ]
     }
 
+    handleSuppressionPari = (id) => {
+        const pariIndexTab = this.state.paris.findIndex(l => {
+            return l.id === id;
+        })
+
+        const newParis = [...this.state.paris];
+        newParis.splice(pariIndexTab,1);
+
+        this.setState({paris:newParis});
+    }
+
     render() {
     return (
     <table className="table text-center">
@@ -32,6 +43,7 @@ class Paris extends Component{
                             enjeu={pari.enjeu}
                             participants={pari.participants}
                             fin={pari.fin}
+                            suppression={() => this.handleSuppressionPari(pari.id)}
                         />
                     </tr>
                 )

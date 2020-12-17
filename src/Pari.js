@@ -9,7 +9,7 @@ const pari = (props) => (
         <td>{props.enjeu}</td>
         <td>{props.participants}</td>
         <td>{props.fin}</td>
-        <td><Bouton typeBtn={"btn-danger"} click={() => console.log("supprimer")}>Supprimer</Bouton></td>
+        <td><Bouton typeBtn={"btn-danger"} click={props.suppression}>Supprimer</Bouton></td>
 
         </>
 
