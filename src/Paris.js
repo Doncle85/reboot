@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import Pari from "./Pari"
+import Pari from "./Pari";
+import FormulaireAjout from "./FormulaireAjout"
 
 class Paris extends Component{
     state = {
             paris : [
-                {id:1 ,pari:"po",createur:"po",enjeu:"po",participants:"po",fin:"pi"}
-            ]
+                {id:1 ,pari:"",createur:"",enjeu:"",participants:"",fin:""}
+            ],
+        lastIdPari : 2,
     }
 
     handleSuppressionPari = (id) => {
@@ -19,8 +21,30 @@ class Paris extends Component{
         this.setState({paris:newParis});
     }
 
+    handleAjoutLivre = (pari, createur, enjeu, participants, fin) => {
+        const newPari= {
+            id:this.state.lastIdPari +1,
+            pari : pari,
+            createur: createur,
+            enjeu: enjeu,
+            participants: participants,
+            fin: fin
+        }
+
+            const newListeParis = [...this.state.paris];
+            newListeParis.push(newPari);
+
+            this.setState(oldState => {
+                return{
+                    paris: newListeParis,
+                    lastIdPari: oldState.lastIdPari +1
+                }
+            })
+    }
+
     render() {
     return (
+        <>
     <table className="table text-center">
         <thead>
         <tr className="table-dark">
@@ -51,6 +75,8 @@ class Paris extends Component{
         }
         </tbody>
     </table>
+        {this.props.ajoutPari && <FormulaireAjout validation = {this.handleAjoutLivre}/>}
+        </>
     )
     }
 }
