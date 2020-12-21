@@ -18,7 +18,7 @@ class dashboard extends Component {
         return(
             <div className="container">
                 <h1>hello world</h1>
-                <Paris ajoutPari={this.state.ajoutPari}/>
+                <Paris ajoutPari={this.state.ajoutPari} fermerAjoutPari={() => this.setState({ajoutPari:false})}/>
             <Bouton
                 typeBtn="btn-success"
                 css="w-100"

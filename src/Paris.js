@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Pari from "./Pari";
-import FormulaireAjout from "./FormulaireAjout"
+import FormulaireAjout from "./FormulaireAjout";
+import Alert from "./Alert"
 
 class Paris extends Component{
     state = {
@@ -8,6 +9,7 @@ class Paris extends Component{
                 {id:1 ,pari:"",createur:"",enjeu:"",participants:"",fin:""}
             ],
         lastIdPari : 2,
+        alertMessage: null
     }
 
     handleSuppressionPari = (id) => {
@@ -18,7 +20,13 @@ class Paris extends Component{
         const newParis = [...this.state.paris];
         newParis.splice(pariIndexTab,1);
 
-        this.setState({paris:newParis});
+        this.setState({
+            paris:newParis,
+            alertMessage: {
+                message :"Suppresion efféctué",
+                type : "alert-danger"
+            }
+        });
     }
 
     handleAjoutLivre = (pari, createur, enjeu, participants, fin) => {
@@ -37,14 +45,20 @@ class Paris extends Component{
             this.setState(oldState => {
                 return{
                     paris: newListeParis,
-                    lastIdPari: oldState.lastIdPari +1
+                    lastIdPari: oldState.lastIdPari +1,
+                    alertMessage: {
+                        message :"Pari pris",
+                        type : "alert-success"
+                    }
                 }
             })
+        this.props.fermerAjoutPari();
     }
 
     render() {
     return (
         <>
+            {this.state.alertMessage && <Alert typeAlert={this.state.alertMessage.type}>{this.state.alertMessage.message}</Alert>}
     <table className="table text-center">
         <thead>
         <tr className="table-dark">

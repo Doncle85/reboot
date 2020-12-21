@@ -13,7 +13,17 @@ class FormulaireAjout extends Component {
 
     handleValidationForm = (event) => {
         event.preventDefault();
-        this.props.validation(this.state.pariSaisi,this.state.createurSaisi,this.state.enjeuSaisi,this.state.participantSaisi,this.state.finSaisi)
+        this.props.validation(this.state.pariSaisi,this.state.createurSaisi,this.state.enjeuSaisi,this.state.participantSaisi,this.state.finSaisi);
+        this.setState(
+            {
+                pariSaisi : "",
+                createurSaisi : "",
+                enjeuSaisi : "",
+                participantSaisi: "",
+                finSaisi: ""
+
+            }
+        )
     }
 
     render ()
