@@ -1,13 +1,14 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-import "./Home.module.css";
-import logo from "./images/logo.png"
-
 
 class Home extends Component {
+
+
     render() {
+        let image = process.env.PUBLIC_URL+"/images/logo.png";
         return (
-            <div>
+            <div style={{
+                backgroundImage: `url(${image})`}}>
                 <div className="container-fluid" className="text-center">
                     <div className="card" >
 
