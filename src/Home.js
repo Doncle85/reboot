@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import "./Home.module.css";
+import logo from "./images/logo.png"
 
 
-class App extends Component {
+class Home extends Component {
     render() {
         return (
             <div>
@@ -23,6 +24,7 @@ class App extends Component {
                     <div className="card" >
 
                         <div className="card-body">
+
                             <h5 className="card-title">Le principe</h5>
                             <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
                                 pellentesque lorem eget enim fermentum aliquet. Nullam placerat nibh a nulla sollicitudin,
@@ -55,4 +57,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Home;

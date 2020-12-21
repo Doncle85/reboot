@@ -29,7 +29,7 @@ class Paris extends Component{
         });
     }
 
-    handleAjoutLivre = (pari, createur, enjeu, participants, fin) => {
+    handleAjoutPari = (pari, createur, enjeu, participants, fin) => {
         const newPari= {
             id:this.state.lastIdPari +1,
             pari : pari,
