@@ -21,7 +21,8 @@ class FormulaireAjout extends Component {
 
             bet: this.state.pariSaisi,
             stake: this.state.enjeuSaisi,
-            endbet: this.state.finSaisi
+            endbet: this.state.finSaisi,
+            creator: this.state.createurSaisi
         };
 
 
