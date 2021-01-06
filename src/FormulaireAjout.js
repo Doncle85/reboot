@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Bouton from "./Bouton";
+import axios from "axios";
 
 class FormulaireAjout extends Component {
     state= {
@@ -7,13 +8,30 @@ class FormulaireAjout extends Component {
             createurSaisi : "",
             enjeuSaisi : "",
             participantSaisi: "",
-            finSaisi: ""
+            finSaisi: "",
 
     }
 
     handleValidationForm = (event) => {
         event.preventDefault();
         this.props.validation(this.state.pariSaisi,this.state.createurSaisi,this.state.enjeuSaisi,this.state.participantSaisi,this.state.finSaisi);
+
+
+        const betObject = {
+
+            bet: this.state.pariSaisi,
+            stake: this.state.enjeuSaisi,
+            endbet: this.state.finSaisi
+        };
+
+
+        axios.post('http://localhost:8080/records', betObject)
+        //     // .then((res) => {
+        //     //     this.setState({loggedIn:true})
+        //     // }).catch((error) => {
+        //     // this.setState({fail:true})
+        // });
+
         this.setState(
             {
                 pariSaisi : "",
@@ -24,7 +42,9 @@ class FormulaireAjout extends Component {
 
             }
         )
+
     }
+
 
     render ()
     {
