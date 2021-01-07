@@ -89,7 +89,7 @@ class Paris extends Component{
         }
         </tbody>
     </table>
-        {this.props.ajoutPari && <FormulaireAjout validation = {this.handleAjoutLivre}/>}
+        {this.props.ajoutPari && <FormulaireAjout validation = {this.handleAjoutPari}/>}
         </>
     )
     }
