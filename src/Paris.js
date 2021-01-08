@@ -59,9 +59,9 @@ class Paris extends Component{
     return (
         <>
             {this.state.alertMessage && <Alert typeAlert={this.state.alertMessage.type}>{this.state.alertMessage.message}</Alert>}
-    <table className="table text-center">
+    <table className="table table text-center">
         <thead>
-        <tr className="table-dark">
+        <tr className="table table-dark">
            <th>Paris</th>
            <th>Créateur</th>
            <th>Enjeu</th>

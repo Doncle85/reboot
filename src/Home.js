@@ -2,20 +2,22 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import "./Home.module.css";
 import logo from "./images/logo.png"
+import Footer from "./Footer";
 
 
 class Home extends Component {
     render() {
         return (
             <div>
+
                 <div className="container-fluid" className="text-center">
                     <div className="card" >
 
                         <div className="card-body" >
                             <h5 className="card-title">BetFriend</h5>
                             <p className="card-text">Le site qui vous permets de parier entre ami(e)s</p>
-                            <button>
-                                <Link className="nav-link" to="/Portal">Ready ?</Link>
+                            <button type="button" >
+                                <Link className="nav-link" to="/Portal" style={{color:"#007BFF"}}>Vous possédez deja un compte ?</Link>
                             </button>
                         </div>
                     </div>
@@ -46,8 +48,8 @@ class Home extends Component {
                                 sit amet augue rhoncus, et laoreet enim fringilla. Ut maximus a quam ut lacinia. Ut ac
                                 ullamcorper leo.</p>
 
-                            <button type="button" className="btn btn-danger">
-                                <Link className="nav-link" to="/Portal" style={{color:"black"}}>Ready ?</Link>
+                            <button type="button" >
+                                <Link className="nav-link" to="/Portal" style={{color:"#007BFF"}}>Ready ?</Link>
                             </button>
                         </div>
                     </div>
