@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import {Redirect, Route} from "react-router";
+import {Redirect, Route, } from "react-router";
 import {Button, Modal} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 
 class Login extends Component {
@@ -12,6 +13,7 @@ class Login extends Component {
 
         this.onChangeUserEmail = this.onChangeUserEmail.bind(this);
         this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
+        this.handleklose = this.handleklose.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleClose = this.handleClose.bind(this);
 
@@ -55,12 +57,35 @@ class Login extends Component {
         this.setState({fail: false})
     }
 
+    handleklose() {
+            console.log("close")
+            this.setState({loggedIn: false})
+        //<Redirect to="/dashboard" />;
+    }
+/*<Redirect to="/dashboard" />*/
+
     render() {
         return (
             <>
 
                 <Route exact path="/Portal">
-                    {this.state.loggedIn ? <Redirect to="/dashboard" /> : null}
+                    {this.state.loggedIn ? <Modal show={this.state.loggedIn}>
+                            <Modal.Header closeButton onClick={this.handleklose}>
+                                <Modal.Title>Success</Modal.Title>
+                            </Modal.Header>
+
+                            <Modal.Body>
+                                <p>success</p>
+                            </Modal.Body>
+
+                            <Modal.Footer>
+                                <Link to="/dashboard">
+                                <Button variant="success">Close</Button>
+                            </Link>
+                            </Modal.Footer>
+                        </Modal>
+                     : null}
+
                 </Route>
                 {this.state.fail ?   <Modal show={this.state.fail}>
                         <Modal.Header closeButton onClick={this.handleClose}>
