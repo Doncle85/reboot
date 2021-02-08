@@ -71,7 +71,9 @@ class Login extends Component {
                 <Route exact path="/Portal">
                     {this.state.loggedIn ? <Modal show={this.state.loggedIn}>
                             <Modal.Header closeButton onClick={this.handleklose}>
+                                <Link>
                                 <Modal.Title>Success</Modal.Title>
+                                </Link>
                             </Modal.Header>
 
                             <Modal.Body>
