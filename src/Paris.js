@@ -42,16 +42,24 @@ class Paris extends Component{
             const newListeParis = [...this.state.paris];
             newListeParis.push(newPari);
 
+
+
             this.setState(oldState => {
                 return{
                     paris: newListeParis,
                     lastIdPari: oldState.lastIdPari +1,
                     alertMessage: {
                         message :"Pari pris",
-                        type : "alert-success"
-                    }
+                        type : "alert-success",
+                    },
                 }
-            })
+            },()=>{
+
+                window.setTimeout(()=>{
+
+                    this.setState({alertMessage:null})
+
+                },5000)})
         this.props.fermerAjoutPari();
     }
 

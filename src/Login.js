@@ -95,7 +95,7 @@ class Login extends Component {
                         </Modal.Header>
 
                         <Modal.Body>
-                            <iframe src="https://giphy.com/embed/gQDazMXigdtD2" width="480" height="309"
+                            <iframe src="https://giphy.com/embed/gQDazMXigdtD2" width="380" height="259"
                              frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
                         </Modal.Body>
 
