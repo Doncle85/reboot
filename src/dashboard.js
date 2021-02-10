@@ -7,7 +7,7 @@ class dashboard extends Component {
 
     state = {
         ajoutPari: false,
-        bets: []
+        bets : []
     }
 
     handleClickAjoutPari = () => {
@@ -15,6 +15,7 @@ class dashboard extends Component {
             return {ajoutPari: !oldState.ajoutPari}
         })
     }
+
 
     componentDidMount() {
         axios.get('http://localhost:8080/bets')
@@ -25,7 +26,6 @@ class dashboard extends Component {
             console.log(error)
         });
     }
-
 
     render() {
         console.log(this.state.bets)
