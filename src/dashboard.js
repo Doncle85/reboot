@@ -20,7 +20,7 @@ class dashboard extends Component {
         axios.get('http://localhost:8080/bets')
             .then((res) => {
                 console.log(res)
-                this.setState({bets:res})
+                this.setState({bets:res.data})
             }).catch((error) => {
             console.log(error)
         });
@@ -28,11 +28,36 @@ class dashboard extends Component {
 
 
     render() {
+        console.log(this.state.bets)
+        const bets = this.state.bets.map(bet =>  { return(
+            <tr>
+            <td>{bet.id}</td>
+            <td>{bet.bet}</td>
+            <td>{bet.creator}</td>
+            <td>{bet.stake}</td>
+            <td>{bet.winner}</td>
+            <td>{bet.endbet}</td>
+        </tr>)
+        })
         return (
             <div className="container">
 
                 <h1 style={{textAlign: "center", color: "#007BFF"}}>Welcome to dashboard</h1>
-
+                <table className="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">bet</th>
+                        <th scope="col">creator</th>
+                        <th scope="col">stake</th>
+                        <th scope="col">winner</th>
+                        <th scope="col">endbet</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {bets}
+                    </tbody>
+                </table>
                 <Paris ajoutPari={this.state.ajoutPari} fermerAjoutPari={() => this.setState({ajoutPari: false})}/>
                 <Bouton
                     typeBtn="btn-success"
