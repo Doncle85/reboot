@@ -23,10 +23,16 @@ class Paris extends Component{
         this.setState({
             paris:newParis,
             alertMessage: {
-                message :"Suppresion efféctué",
+                message :"Votre pari a bien été supprimé",
                 type : "alert-danger"
             }
-        });
+        },()=>{
+
+            window.setTimeout(()=>{
+
+                this.setState({alertMessage:null})
+
+            },5000)});
     }
 
     handleAjoutPari = (pari, createur, enjeu, participants, fin) => {
@@ -49,7 +55,7 @@ class Paris extends Component{
                     paris: newListeParis,
                     lastIdPari: oldState.lastIdPari +1,
                     alertMessage: {
-                        message :"Pari pris",
+                        message :"Votre pari a bien été pris en compte",
                         type : "alert-success",
                     },
                 }
