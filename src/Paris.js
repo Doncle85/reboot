@@ -6,18 +6,16 @@ import axios from "axios";
 
 class Paris extends Component {
     state = {
-        paris: [
-        ],
-        lastIdPari: 2,
+        bets: [],
         alertMessage: null
     }
 
     handleSuppressionPari = (id) => {
-        const pariIndexTab = this.state.paris.findIndex(l => {
+        const pariIndexTab = this.state.bets.findIndex(l => {
             return l.id === id;
         })
 
-        const newParis = [...this.state.paris];
+        const newParis = [...this.state.bets];
         newParis.splice(pariIndexTab, 1);
 
         this.setState({
@@ -36,86 +34,59 @@ class Paris extends Component {
         });
     }
 
-    handleAjoutPari = (pari, createur, enjeu, participants, fin) => {
-        const newPari = {
-            id: this.state.lastIdPari + 1,
-            pari: pari,
-            createur: createur,
-            enjeu: enjeu,
-            participants: participants,
-            fin: fin
-        }
-
-        const newListeParis = [...this.state.paris];
-        newListeParis.push(newPari);
-
-
-        this.setState(oldState => {
-            return {
-                paris: newListeParis,
-                lastIdPari: oldState.lastIdPari + 1,
-                alertMessage: {
-                    message: "Votre pari a bien été pris en compte",
-                    type: "alert-success",
-                },
-            }
-        }, () => {
-
-            window.setTimeout(() => {
-
-                this.setState({alertMessage: null})
-
-            }, 5000)
-        })
-        this.props.fermerAjoutPari();
+    reloadBets = ()=> {
+        axios.get('http://localhost:8080/bets')
+            .then((res) => {
+                console.log(res)
+                this.setState({bets: res.data})
+            }).catch((error) => {
+            console.log(error)
+        });
     }
 
     componentDidMount() {
         axios.get('http://localhost:8080/bets')
             .then((res) => {
                 console.log(res)
-                this.setState({pari: res.data})
+                this.setState({bets: res.data})
             }).catch((error) => {
             console.log(error)
         });
     }
 
     render() {
+        console.log(this.state.bets)
+        const bets = this.state.bets.map(bet => {
+            return (
+                <tr>
+                    <td>{bet.id}</td>
+                    <td>{bet.bet}</td>
+                    <td>{bet.creator}</td>
+                    <td>{bet.stake}</td>
+                    <td>{bet.winner}</td>
+                    <td>{bet.endbet}</td>
+                </tr>)
+        })
         return (
             <>
                 {this.state.alertMessage &&
                 <Alert typeAlert={this.state.alertMessage.type}>{this.state.alertMessage.message}</Alert>}
-                <table className="table table text-center">
+                <table className="table table-hover">
                     <thead>
-                    <tr className="table table-dark">
-                        <th>Paris</th>
-                        <th>Créateur</th>
-                        <th>Enjeu</th>
-                        <th>Participants</th>
-                        <th>fin du paris</th>
-                        <th>actions</th>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">bet</th>
+                        <th scope="col">creator</th>
+                        <th scope="col">stake</th>
+                        <th scope="col">winner</th>
+                        <th scope="col">endbet</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {
-                        this.state.paris.map(pari => {
-                            return (
-                                <tr key={pari.id}>
-                                    <Pari
-                                        pari={pari.pari}
-                                        createur={pari.createur}
-                                        enjeu={pari.enjeu}
-                                        participants={pari.participants}
-                                        fin={pari.fin}
-                                        suppression={() => this.handleSuppressionPari(pari.id)}
-                                    />
-                                </tr>
-                            )
-                        })
-                    }
+                    {bets}
                     </tbody>
                 </table>
-                {this.props.ajoutPari && <FormulaireAjout validation={this.handleAjoutPari}/>}
+                {this.props.ajoutPari && <FormulaireAjout reloadBets={this.reloadBets}/>}
             </>
         )
     }
