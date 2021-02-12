@@ -51,7 +51,7 @@ class Register extends Component {
 
         axios.post('http://localhost:8080/register', userObject)
             .then((res) => {
-                this.setState({showModal:true})
+                this.setState({showModal: true})
             }).catch((error) => {
             console.log(error)
         });
