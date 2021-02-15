@@ -14,24 +14,21 @@ class FormulaireAjout extends Component {
 
     handleValidationForm = (event) => {
         event.preventDefault();
-        this.props.validation(this.state.pariSaisi,this.state.createurSaisi,this.state.enjeuSaisi,this.state.participantSaisi,this.state.finSaisi);
-
+       
 
         const betObject = {
-
             bet: this.state.pariSaisi,
             stake: this.state.enjeuSaisi,
             endbet: this.state.finSaisi,
-            creator: this.state.createurSaisi
+            creator: this.state.createurSaisi,
+            challenger: this.state.participantSaisi
         };
 
 
         axios.post('http://localhost:8080/records', betObject)
-        //     // .then((res) => {
-        //     //     this.setState({loggedIn:true})
-        //     // }).catch((error) => {
-        //     // this.setState({fail:true})
-        // });
+             .then((res) => {
+                 this.props.reloadBets()
+             })
 
         this.setState(
             {
@@ -45,7 +42,6 @@ class FormulaireAjout extends Component {
         )
 
     }
-
 
     render ()
     {

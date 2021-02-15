@@ -35,11 +35,12 @@ class Register extends Component {
     }
 
 
-
-
-
     handleClick(e) {
         e.preventDefault()
+
+        if(this.state.name === "" || this.state.email === "" || this.state.password === ""){
+            return;
+        }
 
         const userObject = {
             username: this.state.name,
@@ -50,7 +51,7 @@ class Register extends Component {
 
         axios.post('http://localhost:8080/register', userObject)
             .then((res) => {
-                this.setState({showModal:true})
+                this.setState({showModal: true})
             }).catch((error) => {
             console.log(error)
         });
@@ -66,18 +67,20 @@ class Register extends Component {
         return <>
 
             <Modal show={this.state.showModal}>
-                <Modal.Header closeButton onClick={this.handleClose}>
-                    <Modal.Title>Inscription Reussie</Modal.Title>
-                </Modal.Header>
+            <Modal.Header closeButton onClick={this.handleClose}>
+                <Modal.Title>Inscription Reussie</Modal.Title>
+            </Modal.Header>
 
-                <Modal.Body>
-                    <p>Bienvenue sur BetFriend</p>
-                </Modal.Body>
+            <Modal.Body>
+                <p>Bienvenue sur BetFriend</p>
+            </Modal.Body>
 
-                <Modal.Footer>
-                    <Button variant="success" onClick={this.handleClose}>Close</Button>
-                </Modal.Footer>
-            </Modal>
+            <Modal.Footer>
+                <Button variant="success" onClick={this.handleClose}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+
+
 
             <div className="col-md-5">
                 <div className="card">
