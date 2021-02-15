@@ -66,6 +66,7 @@ class Paris extends Component {
                     <td>{bet.stake}</td>
                     <td>{bet.winner}</td>
                     <td>{bet.endbet}</td>
+                    <td><Bouton typeBtn={"btn-danger"}>Supprimer</Bouton></td>
                 </tr>)
         })
         return (
@@ -81,6 +82,7 @@ class Paris extends Component {
                         <th scope="col">stake</th>
                         <th scope="col">winner</th>
                         <th scope="col">endbet</th>
+                        <th scope="col">suppression</th>
                     </tr>
                     </thead>
                     <tbody>
