@@ -3,6 +3,7 @@ import Pari from "./Pari";
 import FormulaireAjout from "./FormulaireAjout";
 import Alert from "./Alert"
 import axios from "axios";
+import Bouton from "./Bouton";
 
 class Paris extends Component {
     state = {
