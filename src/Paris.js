@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Pari from "./Pari";
 import FormulaireAjout from "./FormulaireAjout";
 import Alert from "./Alert"
 import axios from "axios";
@@ -11,29 +10,32 @@ class Paris extends Component {
         alertMessage: null
     }
 
-    handleSuppressionPari = (id) => {
-        const pariIndexTab = this.state.bets.findIndex(l => {
-            return l.id === id;
-        })
-
-        const newParis = [...this.state.bets];
-        newParis.splice(pariIndexTab, 1);
-
-        this.setState({
-            paris: newParis,
-            alertMessage: {
-                message: "Votre pari a bien été supprimé",
-                type: "alert-danger"
-            }
-        }, () => {
-
-            window.setTimeout(() => {
-
-                this.setState({alertMessage: null})
-
-            }, 5000)
-        });
+    handleSuppressionPari() {
+        console.log("bouton qui marche")
+        // const pariIndexTab = this.state.bets.findIndex(l => {
+        //     return l.id === id;
+        // })
+        //
+        // const newParis = [...this.state.bets];
+        // newParis.splice(pariIndexTab, 1);
+        //
+        // this.setState({
+        //     paris: newParis,
+        //     alertMessage: {
+        //         message: "Votre pari a bien été supprimé",
+        //         type: "alert-danger"
+        //     }
+        // }, () => {
+        //
+        //     window.setTimeout(() => {
+        //
+        //         this.setState({alertMessage: null})
+        //
+        //     }, 5000)
+        // });
     }
+
+
 
     reloadBets = ()=> {
         axios.get('http://localhost:8080/bets')
@@ -55,18 +57,19 @@ class Paris extends Component {
         });
     }
 
+
     render() {
         console.log(this.state.bets)
         const bets = this.state.bets.map(bet => {
             return (
-                <tr>
+                <tr key={bet.id}>
                     <td>{bet.id}</td>
                     <td>{bet.bet}</td>
                     <td>{bet.creator}</td>
                     <td>{bet.stake}</td>
                     <td>{bet.winner}</td>
                     <td>{bet.endbet}</td>
-                    <td><Bouton typeBtn={"btn-danger"}>Supprimer</Bouton></td>
+                    <td><Bouton typeBtn={"btn-danger"} onClick={()=>this.handleSuppressionPari}>delete</Bouton></td>
                 </tr>)
         })
         return (
@@ -82,7 +85,7 @@ class Paris extends Component {
                         <th scope="col">stake</th>
                         <th scope="col">winner</th>
                         <th scope="col">endbet</th>
-                        <th scope="col">suppression</th>
+                        <th scope="col">delete</th>
                     </tr>
                     </thead>
                     <tbody>
