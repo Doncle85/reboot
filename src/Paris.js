@@ -10,7 +10,7 @@ class Paris extends Component {
         alertMessage: null
     }
 
-    handleSuppressionPari() {
+    handleSuppressionPari= () => {
         console.log("bouton qui marche")
         // const pariIndexTab = this.state.bets.findIndex(l => {
         //     return l.id === id;
@@ -36,7 +36,6 @@ class Paris extends Component {
     }
 
 
-
     reloadBets = ()=> {
         axios.get('http://localhost:8080/bets')
             .then((res) => {
@@ -59,7 +58,6 @@ class Paris extends Component {
 
 
     render() {
-        console.log(this.state.bets)
         const bets = this.state.bets.map(bet => {
             return (
                 <tr key={bet.id}>
@@ -69,7 +67,7 @@ class Paris extends Component {
                     <td>{bet.stake}</td>
                     <td>{bet.winner}</td>
                     <td>{bet.endbet}</td>
-                    <td><Bouton typeBtn={"btn-danger"} onClick={()=>this.handleSuppressionPari}>delete</Bouton></td>
+                    <td><Bouton typeBtn={"btn-danger"} onClick={this.handleSuppressionPari}>delete</Bouton></td>
                 </tr>)
         })
         return (
