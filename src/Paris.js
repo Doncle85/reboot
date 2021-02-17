@@ -10,8 +10,13 @@ class Paris extends Component {
         alertMessage: null
     }
 
-    handleSuppressionPari= () => {
+    handleSuppressionPari= (event,data) => {
+        console.log(data)
         console.log("bouton qui marche")
+        axios.delete('http://localhost:8080/bets/'+ data)
+            .then((res) => {
+                this.reloadBets()
+            })
         // const pariIndexTab = this.state.bets.findIndex(l => {
         //     return l.id === id;
         // })
@@ -61,13 +66,13 @@ class Paris extends Component {
         const bets = this.state.bets.map(bet => {
             return (
                 <tr key={bet.id}>
-                    <td>{bet.id}</td>
+                    {/*<td>{bet.id}</td>*/}
                     <td>{bet.bet}</td>
-                    <td>{bet.creator}</td>
+                    {/*<td>{bet.creator}</td>*/}
                     <td>{bet.stake}</td>
                     <td>{bet.winner}</td>
                     <td>{bet.endbet}</td>
-                    <td><Bouton typeBtn={"btn-danger"} onClick={this.handleSuppressionPari}>delete</Bouton></td>
+                    <td><Bouton typeBtn={"btn-danger"} onClick={(event)=>this.handleSuppressionPari(event,bet.id)} value={bet.id}>delete</Bouton></td>
                 </tr>)
         })
         return (
@@ -77,9 +82,9 @@ class Paris extends Component {
                 <table className="table table-hover">
                     <thead>
                     <tr>
-                        <th scope="col">id</th>
+                        {/*<th scope="col">id</th>*/}
                         <th scope="col">bet</th>
-                        <th scope="col">creator</th>
+                        {/*<th scope="col">creator</th>*/}
                         <th scope="col">stake</th>
                         <th scope="col">winner</th>
                         <th scope="col">endbet</th>
