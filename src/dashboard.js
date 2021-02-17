@@ -35,7 +35,7 @@ class dashboard extends Component {
                 <Bouton
                     typeBtn="btn-success"
                     css="w-100"
-                    click={this.handleClickAjoutPari}>
+                    onClick={this.handleClickAjoutPari}>
                     {!this.state.ajoutPari ? "Parier" : "Fermer"}
                 </Bouton>
             </div>
