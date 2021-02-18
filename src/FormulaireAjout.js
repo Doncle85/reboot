@@ -12,9 +12,8 @@ class FormulaireAjout extends Component {
 
     }
 
-    handleValidationForm = (event) => {
+    handleValidationForm= (event) => {
         event.preventDefault();
-       
 
         const betObject = {
             bet: this.state.pariSaisi,
@@ -96,7 +95,7 @@ class FormulaireAjout extends Component {
                                onChange={(event) => this.setState({finSaisi:event.target.value})}
                         />
                     </div>
-                    <Bouton typeBtn={"btn-primary"} click={this.handleValidationForm}>Valider</Bouton>
+                    <Bouton typeBtn={"btn-primary"} onClick={this.handleValidationForm}>Valider</Bouton>
                 </form>
             </>
         )
