@@ -51,11 +51,11 @@ class Paris extends Component {
         // });
     };
 
-    handleModifyBet = (e) => {
-        e.preventDefault();
-        console.log("bouton qui marche");
-        this.setState({showModal: true})
-    };
+    // handleModifyBet = (e) => {
+    //     e.preventDefault();
+    //     console.log("bouton qui marche");
+    //     this.setState({showModal: true})
+    // };
 
 
     reloadBets = () => {
@@ -79,6 +79,7 @@ class Paris extends Component {
     }
 
     handleClick(e) {
+        console.log("youpi")
         e.preventDefault();
         this.setState({showModal: true})
     }
@@ -111,7 +112,14 @@ class Paris extends Component {
                     </Modal.Header>
 
                     <Modal.Body>
-                        <p>Bienvenue sur BetFriend</p>
+                        <p>Modifier la date de votre pari</p>
+                        <label htmlFor="fin">Nouvelle date de fin du pari</label>
+                        <input type="date"
+                               min="2020-12-20"
+                               max="2050-12-12"
+                               className="form-control"
+                               id="fin"/>
+                        <Bouton typeBtn={"btn-success"} onClick={this.handleClick}>enregistrer</Bouton>
                     </Modal.Body>
 
                     <Modal.Footer>
