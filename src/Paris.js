@@ -13,11 +13,14 @@ class Paris extends Component {
 
         this.handleClick = this.handleClick.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.modifyBet = this.modifyBet.bind(this);
 
         this.state = {
             bets: [],
             alertMessage: null,
-            showModal: false
+            showModal: false,
+            currentBet: {},
+            updatedEndBet: ""
         }
     }
 
@@ -28,35 +31,7 @@ class Paris extends Component {
             .then((res) => {
                 this.reloadBets()
             })
-        // const pariIndexTab = this.state.bets.findIndex(l => {
-        //     return l.id === id;
-        // })
-        //
-        // const newParis = [...this.state.bets];
-        // newParis.splice(pariIndexTab, 1);
-        //
-        // this.setState({
-        //     paris: newParis,
-        //     alertMessage: {
-        //         message: "Votre pari a bien été supprimé",
-        //         type: "alert-danger"
-        //     }
-        // }, () => {
-        //
-        //     window.setTimeout(() => {
-        //
-        //         this.setState({alertMessage: null})
-        //
-        //     }, 5000)
-        // });
     };
-
-    // handleModifyBet = (e) => {
-    //     e.preventDefault();
-    //     console.log("bouton qui marche");
-    //     this.setState({showModal: true})
-    // };
-
 
     reloadBets = () => {
         axios.get('http://localhost:8080/bets')
@@ -78,15 +53,33 @@ class Paris extends Component {
         });
     }
 
-    handleClick(e) {
+    handleClick(e, bet) {
         console.log("youpi")
         e.preventDefault();
-        this.setState({showModal: true})
+        this.setState({showModal: true, currentBet : bet})
+
     }
 
     handleClose() {
         this.setState({showModal: false})
     }
+
+    modifyBet() {
+      console.log("it work")
+        console.log(this.state.currentBet)
+        console.log(this.state.updatedEndBet)
+        let currentBet = {...this.state.currentBet, endbet: this.state.updatedEndBet};
+        axios.post('http://localhost:8080/updateBet', currentBet)
+            .then((res) => {
+                this.reloadBets()
+            }).catch((error) => {
+            console.log(error)
+        });
+      //
+      //  this.setState({bets:[]})
+    }
+
+
 
 
     render() {
@@ -101,7 +94,7 @@ class Paris extends Component {
                     <td>{bet.endbet}</td>
                     <td><Bouton typeBtn={"btn-danger"} onClick={(event) => this.handleSuppressionPari(event, bet.id)}
                                 value={bet.id}>delete</Bouton></td>
-                    <td><Bouton typeBtn={"btn-success"} onClick={this.handleClick}>Modify</Bouton></td>
+                    <td><Bouton typeBtn={"btn-success"} onClick={(e)=>this.handleClick(e, bet)}>Modify</Bouton></td>
                 </tr>)
         });
         return (
@@ -118,8 +111,10 @@ class Paris extends Component {
                                min="2020-12-20"
                                max="2050-12-12"
                                className="form-control"
+                               value={this.state.updatedEndBet}
+                               onChange={(event) => this.setState({updatedEndBet:event.target.value})}
                                id="fin"/>
-                        <Bouton typeBtn={"btn-success"} onClick={this.handleClick}>enregistrer</Bouton>
+                        <Bouton typeBtn={"btn-success"} onClick={this.modifyBet}>enregistrer</Bouton>
                     </Modal.Body>
 
                     <Modal.Footer>
