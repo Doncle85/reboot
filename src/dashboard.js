@@ -7,7 +7,6 @@ class dashboard extends Component {
 
     state = {
         ajoutPari: false,
-        //bets: []
     }
 
     handleClickAjoutPari = () => {
