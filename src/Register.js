@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import axios from "axios";
-import {Switch, Route, Router} from 'react-router-dom';
 import {Button, Modal} from "react-bootstrap";
 
 class Register extends Component {
@@ -76,7 +75,7 @@ class Register extends Component {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="success" onClick={this.handleClose}>Close</Button>
+                <Button variant="success" onClick={this.handleClose} href='/Dashboard'>Close</Button>
             </Modal.Footer>
         </Modal>
 

@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Bouton from "./Bouton";
 import axios from "axios";
 
 class FormulaireAjout extends Component {
-    state= {
-            pariSaisi : "",
-            createurSaisi : "",
-            enjeuSaisi : "",
-            participantSaisi: "",
-            finSaisi: "",
+    state = {
+        pariSaisi: "",
+        createurSaisi: "",
+        enjeuSaisi: "",
+        participantSaisi: "",
+        finSaisi: "",
 
     }
 
-    handleValidationForm= (event) => {
+    handleValidationForm = (event) => {
         event.preventDefault();
 
         const betObject = {
@@ -25,15 +25,15 @@ class FormulaireAjout extends Component {
 
 
         axios.post('http://localhost:8080/records', betObject)
-             .then((res) => {
-                 this.props.reloadBets()
-             })
+            .then((res) => {
+                this.props.reloadBets()
+            })
 
         this.setState(
             {
-                pariSaisi : "",
-                createurSaisi : "",
-                enjeuSaisi : "",
+                pariSaisi: "",
+                createurSaisi: "",
+                enjeuSaisi: "",
                 participantSaisi: "",
                 finSaisi: ""
 
@@ -42,8 +42,7 @@ class FormulaireAjout extends Component {
 
     }
 
-    render ()
-    {
+    render() {
         return (
             <>
                 <h2>affichage du formulaire d ajout</h2>
@@ -54,7 +53,7 @@ class FormulaireAjout extends Component {
                                className="form-control"
                                id="pari"
                                value={this.state.pariSaisi}
-                               onChange={(event) => this.setState({pariSaisi:event.target.value})}
+                               onChange={(event) => this.setState({pariSaisi: event.target.value})}
                         />
                     </div>
                     <div className="form-group">
@@ -63,7 +62,7 @@ class FormulaireAjout extends Component {
                                className="form-control"
                                id="createur"
                                value={this.state.createurSaisi}
-                               onChange={(event) => this.setState({createurSaisi:event.target.value})}
+                               onChange={(event) => this.setState({createurSaisi: event.target.value})}
                         />
                     </div>
                     <div className="form-group">
@@ -72,7 +71,7 @@ class FormulaireAjout extends Component {
                                className="form-control"
                                id="enjeu"
                                value={this.state.enjeuSaisi}
-                               onChange={(event) => this.setState({enjeuSaisi:event.target.value})}
+                               onChange={(event) => this.setState({enjeuSaisi: event.target.value})}
                         />
                     </div>
                     <div className="form-group">
@@ -81,7 +80,7 @@ class FormulaireAjout extends Component {
                                className="form-control"
                                id="participants"
                                value={this.state.participantSaisi}
-                               onChange={(event) => this.setState({participantSaisi:event.target.value})}
+                               onChange={(event) => this.setState({participantSaisi: event.target.value})}
                         />
                     </div>
                     <div className="form-group">
@@ -92,13 +91,14 @@ class FormulaireAjout extends Component {
                                className="form-control"
                                id="fin"
                                value={this.state.finSaisi}
-                               onChange={(event) => this.setState({finSaisi:event.target.value})}
+                               onChange={(event) => this.setState({finSaisi: event.target.value})}
                         />
                     </div>
                     <Bouton typeBtn={"btn-primary"} onClick={this.handleValidationForm}>Valider</Bouton>
                 </form>
             </>
         )
-    }}
+    }
+}
 
-    export default FormulaireAjout;
+export default FormulaireAjout;

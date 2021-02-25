@@ -14,7 +14,7 @@ class Home extends Component {
                     <div className="card">
 
                         <div className="card-body">
-                            <h5 className="card-title">BetFriend</h5>
+                            <h1 className="card-title">BetFriend</h1>
                             <p className="card-text">Le site qui vous permets de parier entre ami(e)s</p>
                             <button type="button">
                                 <Link className="nav-link" to="/Portal" style={{color: "#007BFF"}}>Vous possédez deja un
@@ -28,35 +28,20 @@ class Home extends Component {
 
                         <div className="card-body">
 
-                            <h5 className="card-title">Le principe</h5>
-                            <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-                                pellentesque lorem eget enim fermentum aliquet. Nullam placerat nibh a nulla
-                                sollicitudin,
-                                id gravida risus interdum. Cras volutpat pellentesque magna a convallis. Suspendisse id
-                                quam
-                                dignissim, scelerisque nisl quis, lacinia neque. Pellentesque et dui varius, commodo
-                                ante
-                                id, commodo augue. Aenean sed sollicitudin magna, ut hendrerit velit. Duis leo ipsum,
-                                faucibus commodo tortor non, feugiat vulputate quam. Aliquam erat volutpat. Donec mauris
-                                massa, venenatis nec elementum a, gravida quis ipsum. Duis et finibus tortor, nec
-                                consequat
-                                mi. Nam sit amet velit quis ipsum pharetra scelerisque. Praesent a porttitor odio.
-
-                                Integer viverra dapibus odio, sed imperdiet lorem interdum id. Aenean sed nisl enim.
-                                Quisque
-                                finibus sit amet ligula id tempor. Sed tincidunt, urna vitae finibus vehicula, ex tellus
-                                tristique urna, ut tempus nunc metus in arcu. Praesent venenatis, nibh pharetra
-                                fringilla
-                                posuere, enim libero euismod nisl, ac fringilla dolor eros feugiat nisi. Proin convallis
-                                nisl magna, in feugiat nulla fringilla id. Suspendisse quis diam et quam vestibulum
-                                eleifend. Suspendisse sit amet laoreet dui. Maecenas in diam tortor. Mauris quis diam
-                                nec
-                                nisl iaculis ultrices eget quis augue. Donec non euismod erat. Pellentesque habitant
-                                morbi
-                                tristique senectus et netus et malesuada fames ac turpis egestas. Donec consectetur
-                                lacus
-                                sit amet augue rhoncus, et laoreet enim fringilla. Ut maximus a quam ut lacinia. Ut ac
-                                ullamcorper leo.</p>
+                            <h1 className="card-title">Le principe</h1>
+                            <p className="card-text">On a tous quelqu’un dans notre entourage qui est un gros joueur et
+                                qui aime lancer des paris pour tout et rien.<br/> On a aussi cette personne qui est
+                                persuadée
+                                d’avoir constamment raison. Mais on a surtout ces amis qui, une fois le pari perdu, ont
+                                soudainement des trous de mémoire et oublient d’honorer l’engagement qu’ils ont
+                                pris.<br/>Grace à l’application, tout cela ne sera qu’un mauvais souvenir, en effet les
+                                paris et récompenses seront enregistrés, impossible donc de nier et d’oublier en cas de
+                                défaite.<br/>Le principe est simple, connectez vous, creez votre pari sur l'évenement de
+                                votre choix, definissez votre récompense(No money it's just for fun),invitez votre
+                                ami(e), fixez une date limite à votre pari et attendez tranquillement la victoire(ou la
+                                défaite....)<br/>
+                                Peu importe le résultat , amusez vous....
+                            </p>
 
                             <button type="button">
                                 <Link className="nav-link" to="/Portal" style={{color: "#007BFF"}}>Ready ?</Link>

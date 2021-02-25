@@ -75,8 +75,6 @@ class Paris extends Component {
             }).catch((error) => {
             console.log(error)
         });
-      //
-      //  this.setState({bets:[]})
     }
 
 
@@ -86,9 +84,7 @@ class Paris extends Component {
         const bets = this.state.bets.map(bet => {
             return (
                 <tr key={bet.id}>
-                    {/*<td>{bet.id}</td>*/}
                     <td>{bet.bet}</td>
-                    {/*<td>{bet.creator}</td>*/}
                     <td>{bet.stake}</td>
                     <td>{bet.winner}</td>
                     <td>{bet.endbet}</td>
