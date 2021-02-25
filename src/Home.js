@@ -15,7 +15,7 @@ class Home extends Component {
 
                         <div className="card-body">
                             <h1 className="card-title">BetFriend</h1>
-                            <p className="card-text">Le site qui vous permets de parier entre ami(e)s</p>
+                            <p className="card-text" style={{fontSize:"19px"}}>Le site qui vous permets de parier entre ami(e)s</p>
                             <button type="button">
                                 <Link className="nav-link" to="/Portal" style={{color: "#007BFF"}}>Vous possédez deja un
                                     compte ?</Link>
@@ -29,7 +29,7 @@ class Home extends Component {
                         <div className="card-body">
 
                             <h1 className="card-title">Le principe</h1>
-                            <p className="card-text">On a tous quelqu’un dans notre entourage qui est un gros joueur et
+                            <p className="card-text" style={{fontSize:"19px"}}>On a tous quelqu’un dans notre entourage qui est un gros joueur et
                                 qui aime lancer des paris pour tout et rien.<br/> On a aussi cette personne qui est
                                 persuadée
                                 d’avoir constamment raison. Mais on a surtout ces amis qui, une fois le pari perdu, ont
